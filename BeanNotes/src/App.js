@@ -6,6 +6,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import Account from './pages/Account';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
+import CreateBrew from './pages/CreateBrew';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               </Protected>
             }
           />
+          <Route path='/create' element={<CreateBrew />} />
         </Routes>
       </AuthContextProvider>
     </div>
