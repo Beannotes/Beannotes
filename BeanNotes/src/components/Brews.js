@@ -47,16 +47,19 @@ const BrewList = () => {
   return (
     <div>
       <h2>Brew List</h2>
-      <ul>
+      <div className="brew-card">
         {brews.map((brew) => (
-          <li key={brew.id}>
-            <strong>Coffee Amount:</strong> {brew.coffeeAmount},{' '}
-            <strong>Water Amount:</strong> {brew.waterAmount},{' '}
-            <strong>Temperature:</strong> {brew.temperature},{' '}
-            <strong>Time Taken:</strong> {formatTime(brew.timeTaken)}
-          </li>
+          <div key={brew.id}>
+            <div className="brew-details">
+              <h3><strong>{brew.coffeeType}</strong></h3>
+              <p><strong>Coffee Amount:</strong> {brew.coffeeAmount}{' g'}</p>
+              <p><strong>Water Amount:</strong> {brew.waterAmount}{' g'}</p>
+              <p><strong>Temperature:</strong> {brew.temperature}{' C'}</p>
+              <p><strong>Time Taken:</strong> {formatTime(brew.timeTaken)}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

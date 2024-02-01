@@ -7,6 +7,7 @@ import Account from './pages/Account';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
 import CreateBrew from './pages/CreateBrew';
+import AddEquipment from './pages/AddEquipment';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             }
           />
           <Route path='/create' element={<CreateBrew />} />
+          <Route path='/addequipment' element={<AddEquipment />} />
         </Routes>
       </AuthContextProvider>
     </div>
