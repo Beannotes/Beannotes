@@ -13,17 +13,7 @@ const CreateBrew = () => {
   const [coffeeType, setCoffeeType] = useState('');
   const [previousEntries, setPreviousEntries] = useState([]);
 
-  useEffect(() => {
-    // Fetch previous entries from Firestore
-    const fetchPreviousEntries = async () => {
-      const entriesQuery = query(collection(db, `users/${user.uid}/brews`));
-      const entriesSnapshot = await getDocs(entriesQuery);
-      const entriesData = entriesSnapshot.docs.map((doc) => doc.data().coffeeType);
-      setPreviousEntries(entriesData);
-    };
-
-    fetchPreviousEntries();
-  }, [user.uid]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,8 +38,7 @@ const CreateBrew = () => {
       // Add the brew object to Firestore with the user's UID as part of the path
       await addDoc(collection(db, `users/${user.uid}/brews`), brew);
 
-      // Update the list of previous entries
-      setPreviousEntries((prevEntries) => [...prevEntries, coffeeType]);
+      
 
       // Clear the input fields after submission
       setCoffeeAmount('');
@@ -79,17 +68,7 @@ const CreateBrew = () => {
                 onChange={(e) => setCoffeeType(e.target.value)}
                 placeholder="Type or select from the list"
               />
-              <select
-                value={coffeeType}
-                onChange={(e) => setCoffeeType(e.target.value)}
-              >
-                <option value="" disabled>Select a coffee type</option>
-                {previousEntries.map((entry, index) => (
-                  <option key={index} value={entry}>
-                    {entry}
-                  </option>
-                ))}
-              </select>
+              
             </div>
           </label>
         </div>
